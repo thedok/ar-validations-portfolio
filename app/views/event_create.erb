@@ -1,0 +1,22 @@
+<% if @errors %>
+	<% @errors.messages.each do |k, v| %>
+	<%= "#{k} and #{v}" %>
+	<br>
+<% end %>
+<% end %>
+
+<form id="event_creation" action="/events/create" method="POST">
+	<p><label for="organizer_name">Name</label></p>
+			<input id="organizer_name" type="text" name="event[organizer_name]">
+
+	<p><label for="organizer_email">Email</label></p>
+			<input id="organizer_email" type="text" name="event[organizer_email]">
+
+	<p><label for="title">Title</label></p>
+			<input id="title" type="text" name="event[title]">
+
+	<p><label for="date">Date</label></p>
+			<input id="date" type="date" name="event[date]">
+
+	<p><input type="submit" value="Create"></p>
+</form>
