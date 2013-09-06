@@ -9,14 +9,15 @@ get '/events/:id/show' do |id|
 end
 
 get '/events/new' do
-	@new_event = []
   erb :event_create
 end
 
-post '/events/create' do
+post '/events/new' do
   @event = Event.new(params[:event])
-  @event.save
-  @errors = @event.errors
- 
+  if @event.save
+    redirect "/events/#{@event.id}/show"
+  else
+    @errors = @event.errors
   erb :event_create
+  end
 end
